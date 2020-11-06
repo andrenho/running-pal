@@ -3,4 +3,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="runner_icon">Runner icon</string>
+    <string name="day">Day %d</string>
+    <string name="schedule_desc">%s running x %d times, %s walking</string>
 </resources>

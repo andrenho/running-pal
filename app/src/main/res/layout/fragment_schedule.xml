@@ -8,5 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/schedule_item_view"
+        tools:itemCount="10"
         tools:context=".schedule.ScheduleFragment" />
 </layout>

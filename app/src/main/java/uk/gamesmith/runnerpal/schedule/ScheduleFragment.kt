@@ -31,17 +31,18 @@ class ScheduleFragment : Fragment() {
                 ScheduleItem(8, 60, 90, true),
                 ScheduleItem(6, 120, 60, false),
         )
+        val nv = requireActivity().supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
 
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_schedule, container, false)
         val adapter = ScheduleAdapter()
         adapter.fullSchedule = data
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_schedule, container, false)
         binding.scheduleRecycler.apply {
             this.adapter = adapter
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             scrollToPosition(adapter.firstNotDone())
             addOnItemTouchListener(RecyclerTouchListener(context, this, object: ClickListener {
                 override fun onClick(view: View?, position: Int) {
-                    val nv = requireActivity().supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
                     nv.navController.navigate(R.id.action_scheduleFragment_to_runnerFragment)
                 }
 

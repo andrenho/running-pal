@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">Runner Pal</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">Running Pal</string>
     <string name="runner_icon">Runner icon</string>
     <string name="day">Day %d</string>
     <string name="schedule_desc">%s running x %d times, %s walking</string>
+    <string name="initial_time">0:00</string>
+    <string name="status">Warming up</string>
+    <string name="pause">Pause</string>
+    <string name="skip"><![CDATA[Skip >>]]></string>
 </resources>

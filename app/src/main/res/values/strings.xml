@@ -7,4 +7,6 @@
     <string name="status">Warming up</string>
     <string name="pause">Pause</string>
     <string name="skip"><![CDATA[Skip >>]]></string>
+    <string name="service_desc">This service runs the timer for Running Pal.</string>
+    <string name="start">Start</string>
 </resources>

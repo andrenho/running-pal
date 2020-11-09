@@ -18,5 +18,9 @@
         android:id="@+id/runnerFragment"
         android:name="uk.gamesmith.runnerpal.runner.RunnerFragment"
         android:label="fragment_runner"
-        tools:layout="@layout/fragment_runner" />
+        tools:layout="@layout/fragment_runner" >
+        <action
+            android:id="@+id/action_runnerFragment_to_scheduleFragment"
+            app:destination="@id/scheduleFragment" />
+    </fragment>
 </navigation>

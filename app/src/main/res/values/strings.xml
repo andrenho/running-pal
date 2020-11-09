@@ -10,4 +10,8 @@
     <string name="service_desc">This service runs the timer for Running Pal.</string>
     <string name="start">Start</string>
     <string name="continue_">Continue</string>
+    <string name="stop_running">Are you sure you want to stop this activity? Your run will not be marked as complete.</string>
+    <string name="stop_running_title">Stop activity</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

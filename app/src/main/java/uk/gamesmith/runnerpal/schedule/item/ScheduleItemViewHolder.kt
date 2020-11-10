@@ -1,11 +1,10 @@
 package uk.gamesmith.runnerpal.schedule.item
 
 import android.graphics.Paint
-import android.view.View
-import android.widget.AdapterView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import uk.gamesmith.runnerpal.R
+import uk.gamesmith.runnerpal.data.ScheduleDay
 import uk.gamesmith.runnerpal.databinding.ScheduleItemViewBinding
 
 class ScheduleItemViewHolder(val binding: ScheduleItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -13,16 +12,16 @@ class ScheduleItemViewHolder(val binding: ScheduleItemViewBinding) : RecyclerVie
         return if (seconds) { "${time}s" } else { "${time / 60}m" }
     }
 
-    fun setScheduleItem(item: ScheduleItem) {
+    fun setScheduleItem(day: ScheduleDay) {
         val res = binding.root.resources
-        val seconds = !((item.runTime % 60 == 0) && (item.walkTime % 60 == 0))
+        val seconds = !((day.runTime % 60 == 0) && (day.walkTime % 60 == 0))
 
         binding.apply {
             scheduleTitle.text = res.getString(R.string.day, position + 1)
             scheduleDescription.text = res.getString(R.string.schedule_desc,
-                    timeToStr(seconds, item.runTime), item.runTimes, timeToStr(seconds, item.walkTime))
+                    timeToStr(seconds, day.runTime), day.runTimes, timeToStr(seconds, day.walkTime))
 
-            if (item.done) {
+            if (day.done) {
                 scheduleTitle.paintFlags = (binding.scheduleTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG)
                 scheduleTitle.setTextColor(ContextCompat.getColor(binding.root.context, R.color.material_on_background_disabled))
                 scheduleDescription.paintFlags = (binding.scheduleDescription.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG)

@@ -13,7 +13,7 @@ import timber.log.Timber
 import uk.gamesmith.runnerpal.R
 import uk.gamesmith.runnerpal.databinding.FragmentScheduleBinding
 import uk.gamesmith.runnerpal.schedule.item.ScheduleAdapter
-import uk.gamesmith.runnerpal.schedule.item.ScheduleItem
+import uk.gamesmith.runnerpal.data.ScheduleDay
 import uk.gamesmith.runnerpal.util.ClickListener
 import uk.gamesmith.runnerpal.util.RecyclerTouchListener
 
@@ -26,8 +26,8 @@ class ScheduleFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         val data = listOf(
-                ScheduleItem(8, 60, 90, true),
-                ScheduleItem(6, 120, 60, false),
+                ScheduleDay(8, 60, 90, true),
+                ScheduleDay(6, 120, 60, false),
         )
 
         val adapter = ScheduleAdapter()
@@ -51,12 +51,12 @@ class ScheduleFragment : Fragment() {
         return binding.root
     }
 
-    private fun goToRunner(scheduleItem: ScheduleItem) {
+    private fun goToRunner(scheduleDay: ScheduleDay) {
         val go = {
             val nv = requireActivity().supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
             nv.navController.navigate(R.id.action_scheduleFragment_to_runnerFragment)
         }
-        if (scheduleItem.done) {
+        if (scheduleDay.done) {
             val builder = AlertDialog.Builder(requireContext())
             builder.setMessage(getString(R.string.activity_again))
                     .setTitle(getString(R.string.activity_again_title))

@@ -1,16 +1,13 @@
 package uk.gamesmith.runnerpal.schedule.item
 
-import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import uk.gamesmith.runnerpal.R
+import uk.gamesmith.runnerpal.data.ScheduleDay
 import uk.gamesmith.runnerpal.databinding.ScheduleItemViewBinding
 
 class ScheduleAdapter() : RecyclerView.Adapter<ScheduleItemViewHolder>() {
-    var fullSchedule : List<ScheduleItem> = listOf()
+    var fullSchedule : List<ScheduleDay> = listOf()
         set(value) {
             field = value
             notifyDataSetChanged()

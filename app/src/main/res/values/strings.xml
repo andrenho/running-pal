@@ -14,4 +14,6 @@
     <string name="stop_running_title">Stop activity</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="activity_again">This activity was already completed. Are you sure you want to do it again?</string>
+    <string name="activity_again_title">Activity completed</string>
 </resources>

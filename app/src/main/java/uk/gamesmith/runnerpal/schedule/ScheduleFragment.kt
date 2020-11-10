@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavHostController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.RecyclerView
 import timber.log.Timber
 import uk.gamesmith.runnerpal.R
 import uk.gamesmith.runnerpal.databinding.FragmentScheduleBinding
@@ -31,7 +29,6 @@ class ScheduleFragment : Fragment() {
                 ScheduleItem(8, 60, 90, true),
                 ScheduleItem(6, 120, 60, false),
         )
-        val nv = requireActivity().supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
 
         val adapter = ScheduleAdapter()
         adapter.fullSchedule = data
@@ -43,7 +40,7 @@ class ScheduleFragment : Fragment() {
             scrollToPosition(adapter.firstNotDone())
             addOnItemTouchListener(RecyclerTouchListener(context, this, object: ClickListener {
                 override fun onClick(view: View?, position: Int) {
-                    nv.navController.navigate(R.id.action_scheduleFragment_to_runnerFragment)
+                    goToRunner(data[position])
                 }
 
                 override fun onLongClick(view: View?, position: Int) {
@@ -52,6 +49,23 @@ class ScheduleFragment : Fragment() {
             }))
         }
         return binding.root
+    }
+
+    private fun goToRunner(scheduleItem: ScheduleItem) {
+        val go = {
+            val nv = requireActivity().supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
+            nv.navController.navigate(R.id.action_scheduleFragment_to_runnerFragment)
+        }
+        if (scheduleItem.done) {
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setMessage(getString(R.string.activity_again))
+                    .setTitle(getString(R.string.activity_again_title))
+                    .setPositiveButton(R.string.yes) { _, _ -> go() }
+                    .setNegativeButton(R.string.no) { _, _ -> }
+            builder.create().show()
+        } else {
+            go();
+        }
     }
 
 }
